@@ -6,6 +6,7 @@ class Vigenere extends StatefulWidget {
   const Vigenere({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _VigenereState createState() => _VigenereState();
 }
 

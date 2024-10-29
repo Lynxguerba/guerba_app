@@ -41,7 +41,7 @@ class WelcomePage extends StatelessWidget {
             DrawerHeader(
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/images/navbar-image.jpg'),
+                  image: AssetImage('assets/images/nv-img.jpg'),
                   fit: BoxFit.cover,
                 ),
               ),
