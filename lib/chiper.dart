@@ -197,7 +197,7 @@ class Chiper extends StatelessWidget {
                               context,
                               MaterialPageRoute(builder: (context) => Atbash()),
                             );
-                            print("View button tapped");
+                            print("Atbash Chiper Test!");
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xff00d1ff),
@@ -272,7 +272,7 @@ class Chiper extends StatelessWidget {
                               context,
                               MaterialPageRoute(builder: (context) => Caesar()),
                             );
-                            print("View button tapped");
+                            print("Caeser Chiper Test!");
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xff00d1ff),
@@ -346,7 +346,7 @@ class Chiper extends StatelessWidget {
                               context,
                               MaterialPageRoute(builder: (context) => Vigenere()),
                             );
-                            print("View button tapped");
+                            print("Vigenère Cipher Test!");
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xff00d1ff),
