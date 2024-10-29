@@ -78,6 +78,9 @@ flutter:
     - assets/images/Atbash.jpg
     - assets/images/Ceasar.jpg
     - assets/images/Vigener.jpg
+    - assets/images/project1.png
+    - assets/images/project2.png
+    - assets/images/project3.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
