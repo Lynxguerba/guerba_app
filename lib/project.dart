@@ -144,20 +144,13 @@ class _ProjectsState extends State<Projects> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.login),
-              title: Text('Login'),
+              leading: Icon(Icons.logout),
+              title: Text('Log Out'),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => LoginPage()),
                 );
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('Logout'),
-              onTap: () {
-                print("Logout tapped");
               },
             ),
           ],

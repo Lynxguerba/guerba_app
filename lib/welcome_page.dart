@@ -105,8 +105,8 @@ class WelcomePage extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.login),
-              title: Text('Login'),
+              leading: Icon(Icons.logout),
+              title: Text('Log Out'),
               onTap: () {
                 Navigator.push(
                   context,
@@ -114,13 +114,7 @@ class WelcomePage extends StatelessWidget {
                 );
               },
             ),
-            ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('Logout'),
-              onTap: () {
-                print("Logout tapped");
-              },
-            ),
+            
           ],
         ),
       ),
@@ -260,6 +254,7 @@ class WelcomePage extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 35.0),
                   child: Container(
                     width: 200,
+                    height: 40,
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.push(
@@ -283,7 +278,7 @@ class WelcomePage extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           const Text('CONTINUE',
-                              style: TextStyle(fontSize: 12)),
+                              style: TextStyle(fontSize: 14)),
                           const Icon(Icons.arrow_forward, size: 18.0),
                         ],
                       ),

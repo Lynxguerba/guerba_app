@@ -98,8 +98,8 @@ class AboutMe extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.login),
-              title: Text('Login'),
+              leading: Icon(Icons.logout),
+              title: Text('Log Out'),
               onTap: () {
                 Navigator.push(
                   context,
@@ -107,13 +107,7 @@ class AboutMe extends StatelessWidget {
                 );
               },
             ),
-            ListTile(
-              leading: Icon(Icons.logout),
-              title: Text('Logout'),
-              onTap: () {
-                print("Logout tapped");
-              },
-            ),
+            
           ],
         ),
       ),
