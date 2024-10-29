@@ -1,55 +1,11 @@
-// lib/main.dart
-
-// ignore_for_file: prefer_const_constructors, avoid_print
+// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:guerba_app/register.dart';
-import 'welcome_page.dart'; // Import the WelcomePage
+import 'package:guerba_app/login_page.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: LoginPage(),
-    );
-  }
-}
-
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
-
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  // TEXT CONTROLLER with pre-filled values
-  final _emailController = TextEditingController(text: 'sample@gmail.com');
-  final _passwordController = TextEditingController(text: 'admin123');
-
-  // Dummy function for sign in
-  void signIn() {
-    if (_emailController.text == 'sample@gmail.com' &&
-        _passwordController.text == 'admin123') {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => WelcomePage(
-                  accountName: '',
-                )),
-      );
-    } else {
-      print("Invalid credentials");
-    }
-  }
+class Register extends StatelessWidget {
+  const Register({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -67,12 +23,18 @@ class _LoginPageState extends State<LoginPage> {
                   height: 100,
                 ),
                 Text(
-                  'GuerbsWorld!',
+                  'Register!',
                   style: GoogleFonts.bebasNeue(fontSize: 52),
                 ),
-                Text(
-                  'Welcome! We\'re glad you\'re here!',
-                  style: TextStyle(fontSize: 20),
+                Padding(
+                  padding: const EdgeInsets.only(left: 25, right: 25),
+                  child: Center(
+                    child: Text(
+                      'Don\'t miss out! Register for your account today!',
+                      style: TextStyle(fontSize: 20),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
                 ),
                 SizedBox(height: 50),
 
@@ -80,7 +42,6 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: TextField(
-                    controller: _emailController,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -101,7 +62,6 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: TextField(
                     obscureText: true,
-                    controller: _passwordController,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -121,9 +81,10 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: GestureDetector(
-                    onTap: signIn,
+                   
                     child: Container(
-                      padding: EdgeInsets.all(20),
+                      padding:
+                          EdgeInsets.symmetric(vertical: 10, horizontal: 25),
                       decoration: BoxDecoration(
                         color: Color(0xFF00D1FF),
                         borderRadius: BorderRadius.circular(12),
@@ -140,34 +101,39 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
-
-                // REGISTER ACCOUNT
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Have no Account?',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push( context,
+                SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push( context,
                         MaterialPageRoute(builder: (context) => 
-                          Register()  
-                        ));
-                        print("Register button tapped!");
-                      },
-                      child: Text(
-                        ' Register Now!',
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 0, 179, 255),
-                          fontWeight: FontWeight.bold,
+                        LoginPage()),
+                      );
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+                      decoration: BoxDecoration(
+                        color:
+                            Colors.transparent, // Set background to transparent
+                        border: Border.all(
+                            color: Color(0xFF00D1FF), width: 2), // Add border
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Back!',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: Colors.black, // Change text color to match the border
+                          ),
                         ),
                       ),
                     ),
-                  ],
+                  ),
                 ),
+
               ],
             ),
           ),
