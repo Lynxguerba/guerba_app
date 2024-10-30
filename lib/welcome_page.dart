@@ -81,7 +81,7 @@ class WelcomePage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => Chiper()),
-                  );
+                );
               },
             ),
             ListTile(
@@ -114,7 +114,6 @@ class WelcomePage extends StatelessWidget {
                 );
               },
             ),
-            
           ],
         ),
       ),
@@ -136,10 +135,10 @@ class WelcomePage extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(top: 20.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                SizedBox(height: 50),
+                SizedBox(height: 160),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Column(
@@ -249,7 +248,10 @@ class WelcomePage extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 150),
+
+                // Spacer to push the button to the bottom
+                Spacer(),
+
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 35.0),
                   child: Container(
@@ -281,10 +283,11 @@ class WelcomePage extends StatelessWidget {
                               style: TextStyle(fontSize: 14)),
                           const Icon(Icons.arrow_forward, size: 18.0),
                         ],
-                      ),
-                    ),
+                      ), 
+                    ), 
                   ),
                 ),
+                SizedBox(height: 30,),
               ],
             ),
           ),
