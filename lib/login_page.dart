@@ -1,14 +1,19 @@
 // lib/main.dart
 
 // ignore_for_file: prefer_const_constructors, avoid_print
-
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:guerba_app/register.dart';
 import 'package:guerba_app/welcome_page.dart';
 // Import the WelcomePage
 
-void main() {
+void main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(MyApp());
 }
 
