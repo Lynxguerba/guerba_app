@@ -1,1 +1,25 @@
-{"flutter":{"platforms":{"android":{"default":{"projectId":"guerbaapp","appId":"1:1005934299751:android:21de20169475bf90d162c2","fileOutput":"android/app/google-services.json"}},"dart":{"lib/firebase_options.dart":{"projectId":"guerbaapp","configurations":{"android":"1:1005934299751:android:21de20169475bf90d162c2","ios":"1:1005934299751:ios:2d2139b894704addd162c2","macos":"1:1005934299751:ios:2d2139b894704addd162c2","web":"1:1005934299751:web:b5c4b0d675fdd2afd162c2","windows":"1:1005934299751:web:0c21edc5b5325a9bd162c2"}}}}}}
+{
+    "flutter": {
+        "platforms": {
+            "android": {
+                "default": {
+                    "projectId": "guerbaapp",
+                    "appId": "1:1005934299751:android:21de20169475bf90d162c2",
+                    "fileOutput": "android/app/google-services.json"
+                }
+            },
+            "dart": {
+                "lib/firebase_options.dart": {
+                    "projectId": "guerbaapp",
+                    "configurations": {
+                        "android": "1:1005934299751:android:21de20169475bf90d162c2",
+                        "ios": "1:1005934299751:ios:2d2139b894704addd162c2",
+                        "macos": "1:1005934299751:ios:2d2139b894704addd162c2",
+                        "web": "1:1005934299751:web:b5c4b0d675fdd2afd162c2",
+                        "windows": "1:1005934299751:web:0c21edc5b5325a9bd162c2"
+                    }
+                }
+            }
+        }
+    }
+}
