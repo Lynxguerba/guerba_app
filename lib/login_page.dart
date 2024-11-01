@@ -5,7 +5,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:guerba_app/register.dart';
-import 'welcome_page.dart'; // Import the WelcomePage
+import 'package:guerba_app/welcome_page.dart';
+// Import the WelcomePage
 
 void main() {
   runApp(MyApp());
@@ -31,26 +32,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  // TEXT CONTROLLER with pre-filled values
-  final _emailController = TextEditingController(text: 'sample@gmail.com');
-  final _passwordController = TextEditingController(text: 'admin123');
-
-  // Dummy function for sign in
-  void signIn() {
-    if (_emailController.text == 'sample@gmail.com' &&
-        _passwordController.text == 'admin123') {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => WelcomePage(
-                  accountName: '',
-                )),
-      );
-    } else {
-      print("Invalid credentials");
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +61,6 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: TextField(
-                    controller: _emailController,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -101,7 +81,6 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: TextField(
                     obscureText: true,
-                    controller: _passwordController,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -121,7 +100,11 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: GestureDetector(
-                    onTap: signIn,
+                    onTap: () {
+                      Navigator.push(
+                        context,  MaterialPageRoute(builder: (context) => WelcomePage())
+                      );
+                    },
                     child: Container(
                       padding: EdgeInsets.all(20),
                       decoration: BoxDecoration(
@@ -152,10 +135,10 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push( context,
-                        MaterialPageRoute(builder: (context) => 
-                          Register()  
-                        ));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Register()));
                         print("Register button tapped!");
                       },
                       child: Text(

@@ -9,9 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class WelcomePage extends StatelessWidget {
-  final String accountName; // Variable to hold the logged-in account name
-
-  const WelcomePage({super.key, required this.accountName});
+  const WelcomePage({super.key});
 
   Future<void> _launchURL(String url) async {
     final Uri uri = Uri.parse(url);

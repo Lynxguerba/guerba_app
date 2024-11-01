@@ -66,7 +66,7 @@ class AboutMe extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            WelcomePage(accountName: accountName)));
+                            WelcomePage()));
               },
             ),
             ListTile(

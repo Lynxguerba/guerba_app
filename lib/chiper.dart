@@ -79,7 +79,7 @@ class Chiper extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          WelcomePage(accountName: accountName),
+                          WelcomePage(),
                     ),
                   );
                 },

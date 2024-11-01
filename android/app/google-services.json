@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1005934299751",
+    "project_id": "guerbaapp",
+    "storage_bucket": "guerbaapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1005934299751:android:21de20169475bf90d162c2",
+        "android_client_info": {
+          "package_name": "com.example.guerba_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQABgP1-1fQAgvwWzEOhsI8NyK9qi_5f0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

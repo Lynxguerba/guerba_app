@@ -113,9 +113,7 @@ class _ProjectsState extends State<Projects> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => WelcomePage(
-                              accountName: '',
-                            )));
+                        builder: (context) => WelcomePage()));
               },
             ),
             ListTile(
