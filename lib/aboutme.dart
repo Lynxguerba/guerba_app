@@ -71,7 +71,7 @@ class AboutMe extends StatelessWidget {
             ),
             ListTile(
               leading: Icon(Icons.security),
-              title: Text('Chiper'),
+              title: Text('Cipher'),
               onTap: () {
                 Navigator.push(
                   context,

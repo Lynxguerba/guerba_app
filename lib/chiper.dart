@@ -86,7 +86,7 @@ class Chiper extends StatelessWidget {
               ),
               ListTile(
                 leading: Icon(Icons.security),
-                title: Text('Chiper'),
+                title: Text('Cipher'),
                 onTap: () {
                   Navigator.push(
                     context,
@@ -169,7 +169,7 @@ class Chiper extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Atbash Chiper', // Add your title here
+                              'Atbash Cipher', // Add your title here
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -244,7 +244,7 @@ class Chiper extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Caeser Chiper', // Add your title here
+                              'Caeser Cipher', // Add your title here
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -318,7 +318,7 @@ class Chiper extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Vigenre Chiper', // Add your title here
+                              'Vigenre Cipher', // Add your title here
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,

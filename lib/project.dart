@@ -118,7 +118,7 @@ class _ProjectsState extends State<Projects> {
             ),
             ListTile(
               leading: Icon(Icons.security),
-              title: Text('Chiper'),
+              title: Text('Cipher'),
               onTap: () {
                 Navigator.push(
                   context,
