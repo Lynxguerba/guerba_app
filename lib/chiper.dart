@@ -135,7 +135,7 @@ class Chiper extends StatelessWidget {
               children: [
                 SizedBox(height: 20),
                 Text(
-                  'Chiper App',
+                  'Cipher App',
                   style: TextStyle(
                     fontSize: 30,
                     color: Color(0xff00d1ff),
