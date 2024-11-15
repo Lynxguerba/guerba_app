@@ -2,14 +2,21 @@
 // prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:guerba_app/aboutme.dart';
+import 'package:guerba_app/api/google_signin_api.dart';
 import 'package:guerba_app/chiper.dart';
 import 'package:guerba_app/login_page.dart';
 import 'package:guerba_app/welcome_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Projects extends StatefulWidget {
-  const Projects({super.key});
+  final GoogleSignInAccount user;
+
+  Projects({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
@@ -113,7 +120,7 @@ class _ProjectsState extends State<Projects> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => WelcomePage()));
+                        builder: (context) => WelcomePage(user: widget.user,)));
               },
             ),
             ListTile(
@@ -122,7 +129,7 @@ class _ProjectsState extends State<Projects> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Chiper()),
+                  MaterialPageRoute(builder: (context) => Chiper(user: widget.user,)),
                 );
               },
             ),
@@ -131,7 +138,7 @@ class _ProjectsState extends State<Projects> {
               title: Text('About Me'),
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => AboutMe()));
+                    MaterialPageRoute(builder: (context) => AboutMe(user: widget.user,)));
               },
             ),
             ListTile(
@@ -144,10 +151,12 @@ class _ProjectsState extends State<Projects> {
             ListTile(
               leading: Icon(Icons.logout),
               title: Text('Log Out'),
-              onTap: () {
-                Navigator.push(
+              onTap: () async {
+                await GoogleSignInApi.logout();
+                Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => LoginPage()),
+                  (route) => false,
                 );
               },
             ),

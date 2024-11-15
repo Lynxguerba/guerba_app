@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:guerba_app/aboutme.dart';
+import 'package:guerba_app/api/google_signin_api.dart';
 import 'package:guerba_app/chiper.dart';
 import 'package:guerba_app/project.dart';
 import 'login_page.dart'; // Import the login page
@@ -9,7 +11,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class WelcomePage extends StatelessWidget {
-  const WelcomePage({super.key});
+  // const WelcomePage({super.key});
+
+  final GoogleSignInAccount user;
+
+  WelcomePage({
+    Key? key,
+    required this.user,
+  }) : super(key: key);
 
   Future<void> _launchURL(String url) async {
     final Uri uri = Uri.parse(url);
@@ -78,7 +87,10 @@ class WelcomePage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Chiper()),
+                  MaterialPageRoute(
+                      builder: (context) => Chiper(
+                            user: user,
+                          )),
                 );
               },
             ),
@@ -88,7 +100,10 @@ class WelcomePage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => AboutMe()),
+                  MaterialPageRoute(
+                      builder: (context) => AboutMe(
+                            user: user,
+                          )),
                 );
               },
             ),
@@ -98,17 +113,22 @@ class WelcomePage extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Projects()),
+                  MaterialPageRoute(
+                      builder: (context) => Projects(
+                            user: user,
+                          )),
                 );
               },
             ),
             ListTile(
               leading: Icon(Icons.logout),
               title: Text('Log Out'),
-              onTap: () {
-                Navigator.push(
+              onTap: () async {
+                await GoogleSignInApi.logout();
+                Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => LoginPage()),
+                  (route) => false,
                 );
               },
             ),
@@ -259,7 +279,10 @@ class WelcomePage extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Chiper()),
+                          MaterialPageRoute(
+                              builder: (context) => Chiper(
+                                    user: user,
+                                  )),
                         );
                       },
                       style: ElevatedButton.styleFrom(
@@ -281,11 +304,13 @@ class WelcomePage extends StatelessWidget {
                               style: TextStyle(fontSize: 14)),
                           const Icon(Icons.arrow_forward, size: 18.0),
                         ],
-                      ), 
-                    ), 
+                      ),
+                    ),
                   ),
                 ),
-                SizedBox(height: 30,),
+                SizedBox(
+                  height: 30,
+                ),
               ],
             ),
           ),
