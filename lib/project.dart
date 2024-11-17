@@ -1,22 +1,33 @@
 // ignore_for_file: prefer_const_constructors, no_leading_underscores_for_local_identifiers, , prefer_const_literals_to_create_immutables, prefer_const_literals_to_create_immutables, prefer_const_literals_to_create_immutables, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, use_build_context_synchronously, prefer_const_constructors_in_immutables, use_build_context_synchronously, use_build_context_synchronously, prefer_const_constructors_in_immutables
 // prefer_const_literals_to_create_immutables
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:guerba_app/aboutme.dart';
 import 'package:guerba_app/api/google_signin_api.dart';
 import 'package:guerba_app/chiper.dart';
 import 'package:guerba_app/login_page.dart';
+import 'package:guerba_app/services/auth_services.dart';
 import 'package:guerba_app/welcome_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Projects extends StatefulWidget {
-  final GoogleSignInAccount user;
+  // final GoogleSignInAccount user;
 
-  // ignore: use_super_parameters, prefer_const_constructors_in_immutables
+  // // ignore: use_super_parameters, prefer_const_constructors_in_immutables
+  // Projects({
+  //   Key? key,
+  //   required this.user,
+  // }) : super(key: key);
+  final GoogleSignInAccount? googleUser;
+  final User? firebaseUser;
+
+  // Constructor accepts either a Google or Firebase user
   Projects({
     Key? key,
-    required this.user,
+    this.googleUser,
+    this.firebaseUser,
   }) : super(key: key);
 
   @override
@@ -121,7 +132,9 @@ class _ProjectsState extends State<Projects> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => WelcomePage(user: widget.user,)));
+                        builder: (context) => WelcomePage(
+                              firebaseUser: widget.firebaseUser,
+                            )));
               },
             ),
             ListTile(
@@ -130,7 +143,9 @@ class _ProjectsState extends State<Projects> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Chiper(user: widget.user,)),
+                  MaterialPageRoute(builder: (context) => Chiper(
+                            firebaseUser: widget.firebaseUser,
+                          )),
                 );
               },
             ),
@@ -139,7 +154,9 @@ class _ProjectsState extends State<Projects> {
               title: Text('About Me'),
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => AboutMe(user: widget.user,)));
+                    MaterialPageRoute(builder: (context) => AboutMe(
+                              firebaseUser: widget.firebaseUser,
+                            )));
               },
             ),
             ListTile(

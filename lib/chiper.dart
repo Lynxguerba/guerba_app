@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, use_build_context_synchronously, prefer_const_constructors_in_immutables
 
+import "package:firebase_auth/firebase_auth.dart";
 import "package:flutter/material.dart";
 import "package:google_sign_in/google_sign_in.dart";
 import "package:guerba_app/aboutme.dart";
@@ -8,16 +9,25 @@ import "package:guerba_app/atbash.dart";
 import "package:guerba_app/caesar.dart";
 import "package:guerba_app/login_page.dart";
 import "package:guerba_app/project.dart";
+import "package:guerba_app/services/auth_services.dart";
 import "package:guerba_app/vigenere.dart";
 import "package:guerba_app/welcome_page.dart";
 
 class Chiper extends StatelessWidget {
-  final GoogleSignInAccount user;
+  
+  // final GoogleSignInAccount user;
 
   // ignore: use_super_parameters
+  // Chiper({
+  //   Key? key,
+  //   required this.user,
+  // }) : super(key: key);
+  final GoogleSignInAccount? googleUser;
+  final User? firebaseUser;
   Chiper({
     Key? key,
-    required this.user,
+    this.googleUser,
+    this.firebaseUser,
   }) : super(key: key);
 
   @override
@@ -85,7 +95,9 @@ class Chiper extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          WelcomePage(user: user),
+                          WelcomePage(
+                        firebaseUser: firebaseUser,
+                      ),
                     ),
                   );
                 },
@@ -96,7 +108,9 @@ class Chiper extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Chiper(user: user,)),
+                    MaterialPageRoute(builder: (context) => Chiper(
+                              firebaseUser: firebaseUser,
+                            )),
                   );
                 },
               ),
@@ -106,7 +120,9 @@ class Chiper extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => AboutMe(user: user)),
+                    MaterialPageRoute(builder: (context) => AboutMe(
+                              firebaseUser: firebaseUser,
+                            )),
                   );
                 },
               ),
@@ -116,7 +132,9 @@ class Chiper extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Projects(user: user,)),
+                    MaterialPageRoute(builder: (context) => Projects(
+                              firebaseUser: firebaseUser,
+                            )),
                   );
                 },
               ),
@@ -126,6 +144,7 @@ class Chiper extends StatelessWidget {
                 onTap: () async {
                   await GoogleSignInApi.logout();
                   Navigator.pushAndRemoveUntil(
+                    // ignore: use_build_context_synchronously
                     context,
                     MaterialPageRoute(builder: (context) => LoginPage()),
                     (route) => false,

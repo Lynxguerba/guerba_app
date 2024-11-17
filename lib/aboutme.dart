@@ -1,20 +1,31 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, avoid_print, use_build_context_synchronously
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:guerba_app/api/google_signin_api.dart';
 import 'package:guerba_app/chiper.dart';
 import 'package:guerba_app/project.dart';
+import 'package:guerba_app/services/auth_services.dart';
 import 'package:guerba_app/welcome_page.dart';
 import 'login_page.dart';
 
 class AboutMe extends StatelessWidget {
-  final GoogleSignInAccount user;
+  // final GoogleSignInAccount user;
 
-  // ignore: use_super_parameters, prefer_const_constructors_in_immutables
+  // // ignore: use_super_parameters, prefer_const_constructors_in_immutables
+  // AboutMe({
+  //   Key? key,
+  //   required this.user,
+  // }) : super(key: key);
+  final GoogleSignInAccount? googleUser;
+  final User? firebaseUser;
+
+  // Constructor accepts either a Google or Firebase user
   AboutMe({
     Key? key,
-    required this.user,
+    this.googleUser,
+    this.firebaseUser,
   }) : super(key: key);
 
   @override
@@ -71,7 +82,9 @@ class AboutMe extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => WelcomePage(user: user)));
+                        builder: (context) => WelcomePage(
+                              firebaseUser: firebaseUser,
+                            )));
               },
             ),
             ListTile(
@@ -80,7 +93,9 @@ class AboutMe extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Chiper(user: user)),
+                  MaterialPageRoute(builder: (context) => Chiper(
+                            firebaseUser: firebaseUser,
+                          )),
                 );
               },
             ),
@@ -96,7 +111,9 @@ class AboutMe extends StatelessWidget {
               title: Text('Projects'),
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Projects(user: user,)));
+                    MaterialPageRoute(builder: (context) => Projects(
+                              firebaseUser: firebaseUser,
+                            )));
               },
             ),
             ListTile(
@@ -105,6 +122,7 @@ class AboutMe extends StatelessWidget {
               onTap: () async {
                 await GoogleSignInApi.logout();
                 Navigator.pushAndRemoveUntil(
+                  // ignore: use_build_context_synchronously
                   context,
                   MaterialPageRoute(builder: (context) => LoginPage()),
                   (route) => false,

@@ -66,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                   style: GoogleFonts.bebasNeue(fontSize: 52),
                 ),
                 Text(
-                  'Welcome! We\'re glad you\'re here!',
+                  'Welcomes! We\'re glad you\'re here!',
                   style: TextStyle(fontSize: 20),
                 ),
                 SizedBox(height: 50),
@@ -117,13 +117,13 @@ class _LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: GestureDetector(
                     //IN THIS PART FIREBASE SETUP
-                    // onTap: () async {
-                    //   await AuthService().signin(
-                    //     email: _emailController.text,
-                    //     password: _passwordController.text,
-                    //     context: context
-                    //   );
-                    // },
+                    onTap: () async {
+                      await AuthService().signin(
+                        email: _emailController.text,
+                        password: _passwordController.text,
+                        context: context
+                      );
+                    },
                     child: Container(
                       padding: EdgeInsets.all(20),
                       decoration: BoxDecoration(
@@ -202,6 +202,19 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  // Future signIn() async {
+  //   final user = await GoogleSignInApi.login();
+
+  //   if (user == null) {
+  //     ScaffoldMessenger.of(context)
+  //         .showSnackBar(SnackBar(content: Text('No user is signed in.')));
+  //   } else {
+  //     // Pass the 'user' object to the WelcomePage
+  //     Navigator.of(context).pushReplacement(
+  //         MaterialPageRoute(builder: (context) => WelcomePage(user: user)));
+  //   }
+  // }
+
   Future signIn() async {
     final user = await GoogleSignInApi.login();
 
@@ -209,9 +222,11 @@ class _LoginPageState extends State<LoginPage> {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text('No user is signed in.')));
     } else {
-      // Pass the 'user' object to the WelcomePage
+      // Pass the Google user to the WelcomePage
       Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => WelcomePage(user: user)));
+        MaterialPageRoute(builder: (context) => WelcomePage(googleUser: user)),
+      );
     }
   }
+
 }

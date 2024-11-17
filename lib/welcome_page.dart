@@ -7,6 +7,7 @@ import 'package:guerba_app/aboutme.dart';
 import 'package:guerba_app/api/google_signin_api.dart';
 import 'package:guerba_app/chiper.dart';
 import 'package:guerba_app/project.dart';
+import 'package:guerba_app/services/auth_services.dart';
 import 'login_page.dart'; // Import the login page
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -14,13 +15,22 @@ import 'package:url_launcher/url_launcher.dart';
 class WelcomePage extends StatelessWidget {
   // const WelcomePage({super.key});
   // final User user;
-  final GoogleSignInAccount  user;
+  // final GoogleSignInAccount  user;
+  final GoogleSignInAccount? googleUser;
+  final User? firebaseUser;
 
-  // ignore: use_super_parameters, prefer_const_constructors_in_immutables
+  // Constructor accepts either a Google or Firebase user
   WelcomePage({
     Key? key,
-     required this.user,
+    this.googleUser,
+    this.firebaseUser,
   }) : super(key: key);
+
+  // ignore: use_super_parameters, prefer_const_constructors_in_immutables
+  // WelcomePage({
+  //   Key? key,
+  //    required this.user,
+  // }) : super(key: key);
 
   Future<void> _launchURL(String url) async {
     final Uri uri = Uri.parse(url);
@@ -91,7 +101,7 @@ class WelcomePage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) => Chiper(
-                            user: user,
+                            firebaseUser: firebaseUser, 
                           )),
                 );
               },
@@ -104,7 +114,7 @@ class WelcomePage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) => AboutMe(
-                            user: user,
+                            firebaseUser: firebaseUser, 
                           )),
                 );
               },
@@ -117,7 +127,7 @@ class WelcomePage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) => Projects(
-                            user: user,
+                            firebaseUser: firebaseUser, 
                           )),
                 );
               },
@@ -126,14 +136,21 @@ class WelcomePage extends StatelessWidget {
               leading: Icon(Icons.logout),
               title: Text('Log Out'),
               onTap: () async {
+                
                 await GoogleSignInApi.logout();
+                print("Google sign-out successful");
+                
+                // Make sure sign-out is complete before navigating to login page
                 Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (context) => LoginPage()),
-                  (route) => false,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) => LoginPage()),
+                  (route) => false, // Removes all previous routes
                 );
+                
               },
             ),
+
           ],
         ),
       ),
@@ -283,7 +300,7 @@ class WelcomePage extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) => Chiper(
-                                    user: user,
+                                    firebaseUser: firebaseUser, 
                                   )),
                         );
                       },
