@@ -3,6 +3,7 @@
 // ignore_for_file: prefer_const_constructors, avoid_print, use_build_context_synchronously
 import 'package:firebase_core/firebase_core.dart';
 import 'package:guerba_app/api/google_signin_api.dart';
+import 'package:guerba_app/services/auth_services.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,6 +24,9 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -40,6 +44,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,6 +75,7 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: TextField(
+                    controller: _emailController,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -88,6 +95,7 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: TextField(
+                    controller: _passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -108,12 +116,14 @@ class _LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: GestureDetector(
-                    onTap: () {
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => WelcomePage()));
-                    },
+                    //IN THIS PART FIREBASE SETUP
+                    // onTap: () async {
+                    //   await AuthService().signin(
+                    //     email: _emailController.text,
+                    //     password: _passwordController.text,
+                    //     context: context
+                    //   );
+                    // },
                     child: Container(
                       padding: EdgeInsets.all(20),
                       decoration: BoxDecoration(

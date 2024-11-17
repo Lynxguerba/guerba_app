@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
+// ignore_for_file: prefer_const_constructors, avoid_print, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, use_build_context_synchronously, prefer_const_constructors_in_immutables
 
 import "package:flutter/material.dart";
 import "package:google_sign_in/google_sign_in.dart";
@@ -14,6 +14,7 @@ import "package:guerba_app/welcome_page.dart";
 class Chiper extends StatelessWidget {
   final GoogleSignInAccount user;
 
+  // ignore: use_super_parameters
   Chiper({
     Key? key,
     required this.user,

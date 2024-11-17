@@ -1,5 +1,6 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, avoid_print
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, avoid_print, use_build_context_synchronously
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:guerba_app/aboutme.dart';
@@ -12,12 +13,13 @@ import 'package:url_launcher/url_launcher.dart';
 
 class WelcomePage extends StatelessWidget {
   // const WelcomePage({super.key});
+  // final User user;
+  final GoogleSignInAccount  user;
 
-  final GoogleSignInAccount user;
-
+  // ignore: use_super_parameters, prefer_const_constructors_in_immutables
   WelcomePage({
     Key? key,
-    required this.user,
+     required this.user,
   }) : super(key: key);
 
   Future<void> _launchURL(String url) async {

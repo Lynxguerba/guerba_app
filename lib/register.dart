@@ -3,10 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:guerba_app/login_page.dart';
+import 'package:guerba_app/services/auth_services.dart';
 
 class Register extends StatelessWidget {
-  const Register({super.key});
+  Register({super.key});
 
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,6 +46,7 @@ class Register extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: TextField(
+                    controller: _emailController,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
@@ -61,6 +66,7 @@ class Register extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: TextField(
+                    controller: _passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
@@ -81,7 +87,12 @@ class Register extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: GestureDetector(
-                   
+                    onTap: () async {
+                      await AuthService().signup(
+                          email: _emailController.text,
+                          password: _passwordController.text,
+                          context: context);
+                    },
                     child: Container(
                       padding:
                           EdgeInsets.symmetric(vertical: 10, horizontal: 25),

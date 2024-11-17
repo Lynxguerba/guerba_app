@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, no_leading_underscores_for_local_identifiers, , prefer_const_literals_to_create_immutables, prefer_const_literals_to_create_immutables, prefer_const_literals_to_create_immutables, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
+// ignore_for_file: prefer_const_constructors, no_leading_underscores_for_local_identifiers, , prefer_const_literals_to_create_immutables, prefer_const_literals_to_create_immutables, prefer_const_literals_to_create_immutables, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, use_build_context_synchronously, prefer_const_constructors_in_immutables, use_build_context_synchronously, use_build_context_synchronously, prefer_const_constructors_in_immutables
 // prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
@@ -13,6 +13,7 @@ import 'package:url_launcher/url_launcher.dart';
 class Projects extends StatefulWidget {
   final GoogleSignInAccount user;
 
+  // ignore: use_super_parameters, prefer_const_constructors_in_immutables
   Projects({
     Key? key,
     required this.user,
@@ -154,6 +155,7 @@ class _ProjectsState extends State<Projects> {
               onTap: () async {
                 await GoogleSignInApi.logout();
                 Navigator.pushAndRemoveUntil(
+                  // ignore: use_build_context_synchronously
                   context,
                   MaterialPageRoute(builder: (context) => LoginPage()),
                   (route) => false,

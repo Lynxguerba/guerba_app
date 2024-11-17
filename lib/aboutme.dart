@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, avoid_print
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers, avoid_print, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -11,6 +11,7 @@ import 'login_page.dart';
 class AboutMe extends StatelessWidget {
   final GoogleSignInAccount user;
 
+  // ignore: use_super_parameters, prefer_const_constructors_in_immutables
   AboutMe({
     Key? key,
     required this.user,
